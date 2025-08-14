@@ -64,7 +64,7 @@ while True:
         else:
             playerIn = False
 
-    # Dealer's turn (only if player hasn't busted)
+    # Dealer's turn
     while dealerIn and total(playerHand) <= 21:
         if total(dealerHand) < 17:
             dealCard(dealerHand)
@@ -73,6 +73,10 @@ while True:
         if total(dealerHand) >= 21:
             break
 
+    # Show dealer's full hand before results
+    print(f"\nDealer's hand: {dealerHand} for a total of {total(dealerHand)}")
+
+    # Results
     if total(playerHand) == 21:
         print(f"\n{playerName}, you have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
         print("Blackjack You win!")
@@ -85,6 +89,9 @@ while True:
     elif total(dealerHand) > 21:
         print(f"\n{playerName}, you have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
         print("Dealer busted! You win!")
+    elif total(playerHand) == total(dealerHand):
+        print(f"\n{playerName}, you have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+        print("Push! It's a tie.")
     elif 21 - total(dealerHand) < 21 - total(playerHand):
         print(f"\n{playerName}, you have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
         print("Dealer wins!")
